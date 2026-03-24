@@ -308,37 +308,55 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             <!-- Toko Ritel -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_toko_ritel') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_toko_ritel', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">Toko Ritel</p>
             </div>
             
             <!-- Reseller -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_reseller') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_reseller', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">Reseller</p>
             </div>
             
             <!-- Restoran -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_restaurant') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_restaurant', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">Restoran & Cafe</p>
             </div>
             
             <!-- Central Kitchen -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_central_kitchen') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_central_kitchen', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">Central Kitchen</p>
             </div>
             
             <!-- Catering -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_catering') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_catering', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">Catering</p>
             </div>
             
             <!-- SPPG -->
             <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-2">
-                <div class="text-4xl font-bold text-red-600 mb-2">{{ App\Models\Setting::get('partner_sppg') }}+</div>
+                <div class="text-4xl font-bold text-red-600 mb-2 flex items-baseline justify-center gap-2">
+                    <span class="counter" data-target="{{ App\Models\Setting::get('partner_sppg', 0) }}">0</span>
+                    <span class="text-2xl">+</span>
+                </div>
                 <p class="text-gray-600 font-medium">SPPG</p>
             </div>
         </div>
@@ -353,6 +371,18 @@
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Apa Kata Mereka?</h2>
             <p class="text-gray-500">Cerita nyata dari para mitra yang telah bersama kami</p>
+        </div>
+
+        <div class="mb-8">
+            <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm text-center">
+                <p class="text-sm text-gray-500 mb-2">Sedikit saran membantu kami melayani lebih baik.</p>
+                <p class="text-gray-500 text-sm">Klik tombol di bawah untuk pergi ke halaman Secreto dan kirim pesan Anda secara langsung kepada kami.</p>
+                <div class="mt-4">
+                    <a href="https://secreto.site/ap7308" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold rounded-2xl px-6 py-3 shadow-lg transition">
+                        Kirim Pesan ke Secreto
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -572,3 +602,41 @@
 </section>
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.counter');
+        if (!counters.length) return;
+
+        const animate = (el) => {
+            const target = parseInt(el.dataset.target, 10) || 0;
+            const duration = 1400;
+            const startTime = performance.now();
+
+            const tick = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target);
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    el.textContent = target;
+                }
+            };
+
+            requestAnimationFrame(tick);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    animate(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        counters.forEach((counter) => observer.observe(counter));
+    });
+</script>
+@endpush

@@ -161,7 +161,7 @@
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="adminmakmurjaya@gmail.com" value="{{ old('email') }}" required autofocus>
+                <input type="email" id="email" name="email" placeholder="Masukkan Gmail" value="{{ old('email') }}" required autofocus>
                 @error('email')
                     <div style="color: #721c24; font-size: 12px; margin-top: 5px;">{{ $message }}</div>
                 @enderror

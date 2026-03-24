@@ -53,10 +53,6 @@
             <div style="font-size:28px;margin-bottom:8px">⚙️</div>
             <strong>Pengaturan Website</strong>
         </a>
-        <a href="{{ route('home') }}" target="_blank" style="background:#374151;color:white;padding:16px;border-radius:10px;text-decoration:none;text-align:center;display:block">
-            <div style="font-size:28px;margin-bottom:8px">🌐</div>
-            <strong>Lihat Website</strong>
-        </a>
     </div>
 </div>
 @endsection
