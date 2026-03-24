@@ -363,8 +363,6 @@
             <li><a href="{{ route('admin.testimonials.index') }}" class="@if(str_starts_with(Route::currentRouteName() ?? '', 'admin.testimonials')) active @endif">💬 Testimoni</a></li>
             <li><hr style="background: rgba(255,255,255,0.2); border: 0; height: 1px; margin: 8px 0;"></li>
             <li><a href="{{ route('admin.settings.index') }}" class="@if(str_starts_with(Route::currentRouteName() ?? '', 'admin.settings')) active @endif">⚙️ Pengaturan</a></li>
-            <li><hr style="background: rgba(255,255,255,0.2); border: 0; height: 1px; margin: 8px 0;"></li>
-            <li><a href="{{ route('home') }}" target="_blank">👁️ Lihat Website</a></li>
         </ul>
     </div>
 
@@ -373,8 +371,6 @@
             <h1>@yield('title')</h1>
             <div style="display:flex;align-items:center;gap:12px;">
                 <span style="color:#555;font-size:14px;">👤 {{ session('admin_user_name', 'Admin') }}</span>
-                <span style="color:#ccc;">|</span>
-                <a href="{{ route('home') }}" target="_blank" style="color:#667eea;text-decoration:none;font-size:14px;">🌐 Lihat Website</a>
                 <span style="color:#ccc;">|</span>
                 <a href="{{ route('admin.logout') }}" style="color:#dc3545;text-decoration:none;font-size:14px;font-weight:600;" onclick="return confirm('Keluar dari admin panel?')">Logout</a>
             </div>

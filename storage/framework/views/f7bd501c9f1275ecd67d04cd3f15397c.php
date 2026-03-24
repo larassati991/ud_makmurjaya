@@ -67,13 +67,6 @@
     <div class="container mx-auto px-4">
         
         <?php if($products->count() > 0): ?>
-            <!-- Category Description -->
-            <?php if($category->description): ?>
-            <div class="mb-12 text-center max-w-3xl mx-auto">
-                <p class="text-lg text-gray-600"><?php echo e($category->description); ?></p>
-            </div>
-            <?php endif; ?>
-            
             <!-- Products Count -->
             <div class="mb-8">
                 <p class="text-gray-600 text-lg">
@@ -99,13 +92,6 @@
                             </div>
                         <?php endif; ?>
                         
-                        <!-- Category Badge -->
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                                <?php echo e($category->name); ?>
-
-                            </span>
-                        </div>
                     </div>
                     
                     <!-- Product Info -->
@@ -114,6 +100,12 @@
                             <?php echo e($product->name); ?>
 
                         </h3>
+                        <?php if(!is_null($product->price)): ?>
+                            <p class="text-2xl font-bold text-red-600 mb-3">
+                                Rp <?php echo e(number_format($product->price, 0, ',', '.')); ?>
+
+                            </p>
+                        <?php endif; ?>
                         
                         <?php if($product->description): ?>
                             <p class="text-gray-600 text-sm mb-4 line-clamp-2"><?php echo e($product->description); ?></p>

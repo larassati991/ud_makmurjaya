@@ -24,12 +24,20 @@ Route::get('/katalog-produk/{slug}', [ProductController::class, 'category'])->na
 // Contact
 Route::get('/hubungi-kami', [ContactController::class, 'index'])->name('contact');
 
+// Login Routes (outside admin prefix)
+Route::get('/login', [\App\Http\Controllers\Admin\AuthController::class, 'loginForm'])->name('admin.login');
+Route::post('/login', [\App\Http\Controllers\Admin\AuthController::class, 'login']);
+Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Auth Routes (no auth check)
-    Route::get('/login', [\App\Http\Controllers\Admin\AuthController::class, 'loginForm'])->name('login');
-    Route::post('/login', [\App\Http\Controllers\Admin\AuthController::class, 'login']);
-    Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+    // Redirect /admin to /login if not authenticated, otherwise to dashboard
+    Route::get('/', function () {
+        if (session()->get('admin_authenticated')) {
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('admin.login');
+    });
     
     // Protected Routes - auth check will be done in controllers
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

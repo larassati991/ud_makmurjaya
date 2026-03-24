@@ -67,13 +67,6 @@
     <div class="container mx-auto px-4">
         
         @if($products->count() > 0)
-            <!-- Category Description -->
-            @if($category->description)
-            <div class="mb-12 text-center max-w-3xl mx-auto">
-                <p class="text-lg text-gray-600">{{ $category->description }}</p>
-            </div>
-            @endif
-            
             <!-- Products Count -->
             <div class="mb-8">
                 <p class="text-gray-600 text-lg">
@@ -98,12 +91,6 @@
                             </div>
                         @endif
                         
-                        <!-- Category Badge -->
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                                {{ $category->name }}
-                            </span>
-                        </div>
                     </div>
                     
                     <!-- Product Info -->
@@ -111,6 +98,11 @@
                         <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-red-600 transition-colors">
                             {{ $product->name }}
                         </h3>
+                        @if(!is_null($product->price))
+                            <p class="text-2xl font-bold text-red-600 mb-3">
+                                Rp {{ number_format($product->price, 0, ',', '.') }}
+                            </p>
+                        @endif
                         
                         @if($product->description)
                             <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ $product->description }}</p>
