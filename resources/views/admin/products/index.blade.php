@@ -8,7 +8,7 @@
             <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #333;">Kelola Produk</h1>
             <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Tambah, edit, atau hapus produk katalog</p>
         </div>
-        <a href="{{ route('admin.products.create') }}" class="btn-create" style="background: #28a745; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;">
+        <a href="{{ route('admin.products.create') }}" class="btn-create" style="background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 12px 24px rgba(127, 29, 29, 0.18);">
             <span style="font-size: 18px;">+</span> Tambah Produk
         </a>
     </div>
@@ -41,7 +41,7 @@
                     @if ($product && $product->image)
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                     @else
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px; font-weight: bold;">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px; font-weight: bold;">
                             {{ substr($product->name, 0, 1) }}
                         </div>
                     @endif
@@ -138,7 +138,7 @@
                     Mulai tambahkan produk baru untuk katalog Anda
                 @endif
             </p>
-            <a href="{{ route('admin.products.create') }}" style="display: inline-block; background: #28a745; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+            <a href="{{ route('admin.products.create') }}" style="display: inline-block; background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: all 0.3s; box-shadow: 0 12px 24px rgba(127, 29, 29, 0.18);">
                 + Tambah Produk
             </a>
         </div>

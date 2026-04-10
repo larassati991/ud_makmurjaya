@@ -46,8 +46,8 @@
         {{-- KONTAK --}}
         <h3 style="font-size:16px;font-weight:700;color:#6B3434;border-bottom:2px solid #6B3434;padding-bottom:8px;margin:24px 0 16px">📞 Nomor Kontak & WhatsApp</h3>
         <div class="form-group">
-            <label>Nomor WhatsApp Utama <small style="color:#888">(format: 628xxx tanpa + atau 0)</small></label>
-            <input type="text" name="whatsapp_number" value="{{ $settings['whatsapp_number'] ?? '' }}" class="form-control" placeholder="6281234567890">
+            <label>Nomor WhatsApp Utama <small style="color:#888">(format: +62 852-2546-1504)</small></label>
+            <input type="text" name="whatsapp_number" value="{{ $settings['whatsapp_number'] ?? '' }}" class="form-control" placeholder="+62 852-2546-1504">
         </div>
         <div class="form-grid" style="grid-template-columns:2fr 1fr">
             <div class="form-group">
@@ -166,8 +166,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Google Maps Embed URL <small style="color:#888">(salin dari Google Maps → Share → Embed)</small></label>
-            <textarea name="maps_embed" class="form-control" rows="3" placeholder="https://www.google.com/maps/embed?...">{{ $settings['maps_embed'] ?? '' }}</textarea>
+            <label>Google Maps Embed <small style="color:#888">(paste kode iframe lengkap atau URL yang bisa di-embed)</small></label>
+            <textarea name="maps_embed" class="form-control" rows="3" placeholder="<iframe src=\"https://www.google.com/maps/embed?...\"></iframe>">{{ $settings['maps_embed'] ?? '' }}</textarea>
+            <small style="color:#9a3412; margin-top: 6px; display:block;">Catatan: link share singkat seperti `https://maps.app.goo.gl/...` sering tidak bisa ditampilkan di iframe. Gunakan menu Google Maps: Share → Embed a map.</small>
         </div>
 
         <div style="margin-top:24px;padding-top:20px;border-top:1px solid #eee;display:flex;gap:12px">

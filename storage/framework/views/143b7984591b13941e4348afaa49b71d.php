@@ -1,4 +1,4 @@
-<a href="https://wa.me/<?php echo e(App\Models\Setting::get('whatsapp_number', '6281234567890')); ?>?text=Halo, saya ingin bertanya tentang produk" 
+<a href="https://wa.me/<?php echo e(preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504'))); ?>?text=Halo, saya ingin bertanya tentang produk" 
    target="_blank"
    class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition transform hover:scale-110 z-50 flex items-center justify-center group">
     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Tentang Kami - UD MAKMUR JAYA DAGING'); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -159,7 +157,7 @@
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Bermitra dengan Kami?</h2>
         <p class="text-xl mb-8">Hubungi kami sekarang untuk mendapatkan penawaran terbaik</p>
-        <a href="https://wa.me/<?php echo e(App\Models\Setting::get('whatsapp_number')); ?>?text=Halo, saya ingin bermitra dengan UD MAKMUR JAYA DAGING" 
+        <a href="https://wa.me/<?php echo e(preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504'))); ?>?text=Halo, saya ingin bermitra dengan UD MAKMUR JAYA DAGING" 
            target="_blank"
            class="bg-white text-primary hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition transform hover:scale-105 inline-block">
             Hubungi Kami Sekarang

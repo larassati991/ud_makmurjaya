@@ -61,7 +61,7 @@
             </div>
             
             <div class="flex justify-center">
-                <a href="https://wa.me/{{ App\Models\Setting::get('whatsapp_number') }}?text=Halo, saya butuh bantuan memilih produk daging" 
+                     <a href="https://wa.me/{{ preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504')) }}?text=Halo, saya butuh bantuan memilih produk daging" 
                    target="_blank"
                    class="btn-primary inline-flex items-center">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">

@@ -41,7 +41,7 @@ class HomeController extends Controller
         ];
 
         // Replace with your WhatsApp number (country code, no +)
-        $whatsapp = '6281234567890';
+        $whatsapp = '+62 852-2546-1504';
 
         return view('home', compact('categories', 'products', 'partners', 'contactPoints', 'whatsapp'));
     }

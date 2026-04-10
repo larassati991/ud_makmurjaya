@@ -26,6 +26,21 @@ class SettingController extends Controller
         $data = $request->except(['_token', '_method']);
 
         foreach ($data as $key => $value) {
+            if ($key === 'maps_embed') {
+                $value = trim((string) $value);
+                $decoded = html_entity_decode($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+                // Prefer iframe src="..." if present.
+                if (preg_match('/src\s*=\s*["\']([^"\']+)["\']/i', $decoded, $matches)) {
+                    $value = $matches[1];
+                } elseif (preg_match('/https?:\/\/[^\s"\']+/i', $decoded, $matches)) {
+                    // Fallback: pick first URL from malformed text.
+                    $value = $matches[0];
+                } else {
+                    $value = '';
+                }
+            }
+
             Setting::set($key, $value ?? '');
         }
 

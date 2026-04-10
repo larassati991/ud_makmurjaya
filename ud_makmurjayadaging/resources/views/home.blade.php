@@ -111,7 +111,7 @@
     <div class="container mx-auto px-4">
         <h3 class="text-xl font-semibold text-green-800 mb-3">Tanya Toko</h3>
         <p class="text-gray-600 mb-4">Untuk pertanyaan seputar produk, stok, atau pemesanan, hubungi kami via WhatsApp.</p>
-        <a href="https://wa.me/{{ $whatsapp }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-green-600 text-white rounded hover:bg-green-700">
+        <a href="https://wa.me/{{ preg_replace('/\\D+/', '', $whatsapp) }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-green-600 text-white rounded hover:bg-green-700">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.8 11.8 0 0012 0C5.37 0 .09 5.26.09 11.9a11.6 11.6 0 001.6 5.7L0 24l6.56-1.7a11.88 11.88 0 005.44 1.27h.02c6.63 0 11.91-5.26 11.91-11.9 0-3.18-1.24-6.17-3.51-8.37zM12 21.6a9.5 9.5 0 01-4.84-1.36l-.35-.21-3.9 1.01 1.04-3.8-.22-.38A9.46 9.46 0 012.6 11.9 9.42 9.42 0 1112 21.6z"/><path d="M17.36 14.22l-1.94-.56a.94.94 0 00-1.02.27l-.72.88a7.47 7.47 0 01-3.56-3.13l.9-.73a.95.95 0 00.28-1.02L9.7 6.56A.95.95 0 008.74 6H6.02a.95.95 0 00-.96.95 6.52 6.52 0 006.5 6.5c.45 0 .89-.05 1.32-.15l.9.14a.95.95 0 00.9-.92v-1.8a.95.95 0 00-.32-.72z"/></svg>
             Chat WhatsApp
         </a>
@@ -143,7 +143,7 @@
             <p class="mt-2 text-gray-700">Jalan Contoh No.1</p>
             <p class="text-gray-700">Kota/Kabupaten, Provinsi</p>
             <div class="mt-4">
-                <a href="https://wa.me/{{ $whatsapp }}" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Hubungi via WhatsApp</a>
+                <a href="https://wa.me/{{ preg_replace('/\\D+/', '', $whatsapp) }}" target="_blank" class="inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Hubungi via WhatsApp</a>
             </div>
         </div>
     </div>

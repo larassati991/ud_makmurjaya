@@ -112,7 +112,7 @@ Password: admin123
 
 ### Application Settings (from settings table)
 - Company Name: UD MAKMUR JAYA DAGING
-- WhatsApp: 6281234567890
+- WhatsApp: +62 852-2546-1504
 - Email: info@udmakmurjaya.com
 - Address: Jl. Contoh Alamat No. 123, Kota, Provinsi
 

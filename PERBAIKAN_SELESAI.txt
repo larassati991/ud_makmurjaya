@@ -89,10 +89,10 @@ http://127.0.0.1:8000/admin/dashboard
 ## 📞 NOMOR WHATSAPP TERKONEKSI
 
 Dari file database:
-- **WhatsApp:** 6281234567890
-- **Phone 1:** 081234567890 (Pricelist & Order)
-- **Phone 2:** 081234567891 (Kerjasama)
-- **Phone 3:** 081234567892 (Pengaduan)
+- **WhatsApp:** +62 852-2546-1504
+- **Phone 1:** +62 852-2546-1504 (Pricelist & Order)
+- **Phone 2:** +62 852-2546-1504 (Kerjasama)
+- **Phone 3:** +62 852-2546-1504 (Pengaduan)
 
 ---
 

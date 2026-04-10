@@ -8,7 +8,7 @@
             <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #333;">Kelola Kategori</h1>
             <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Atur kategori produk untuk katalog Anda</p>
         </div>
-        <a href="{{ route('admin.categories.create') }}" class="btn-create" style="background: #28a745; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;">
+        <a href="{{ route('admin.categories.create') }}" class="btn-create" style="background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 12px 24px rgba(127, 29, 29, 0.18);">
             <span style="font-size: 18px;">+</span> Tambah Kategori
         </a>
     </div>
@@ -23,7 +23,7 @@
                     @if ($category && $category->image)
                         <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                     @else
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px; font-weight: bold;">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px; font-weight: bold;">
                             {{ substr($category->name, 0, 1) }}
                         </div>
                     @endif
@@ -98,7 +98,7 @@
             <div style="font-size: 48px; margin-bottom: 15px;">📂</div>
             <h3 style="margin: 0 0 10px 0; font-size: 20px; font-weight: 700; color: #333;">Belum Ada Kategori</h3>
             <p style="margin: 0 0 20px 0; color: #666; font-size: 14px;">Mulai dengan membuat kategori produk pertama Anda</p>
-            <a href="{{ route('admin.categories.create') }}" style="display: inline-block; background: #28a745; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+            <a href="{{ route('admin.categories.create') }}" style="display: inline-block; background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: all 0.3s; box-shadow: 0 12px 24px rgba(127, 29, 29, 0.18);">
                 + Tambah Kategori
             </a>
         </div>

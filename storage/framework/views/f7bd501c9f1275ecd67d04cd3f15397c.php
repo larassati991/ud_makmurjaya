@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', $category->name . ' - UD MAKMUR JAYA DAGING'); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -116,12 +114,12 @@
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
                                 </svg>
-                                <span class="font-semibold">Berat:</span> <?php echo e(number_format($product->weight, 0, ',', '.')); ?>g
+                                <span class="font-semibold">Berat:</span> <?php echo e(number_format($product->weight, 0, ',', '.')); ?> kg
                             </p>
                         <?php endif; ?>
                         
                         <!-- Order Button -->
-                        <a href="https://wa.me/<?php echo e(App\Models\Setting::get('whatsapp_number', '6281234567890')); ?>?text=Halo, saya tertarik dengan produk <?php echo e($product->name); ?>" 
+                                <a href="https://wa.me/<?php echo e(preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504'))); ?>?text=Halo, saya tertarik dengan produk <?php echo e($product->name); ?>" 
                            target="_blank"
                            class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-3 px-6 rounded-lg transition transform hover:scale-105">
                             Pesan Sekarang
@@ -162,7 +160,7 @@
         <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-12 text-center text-white">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Butuh Bantuan Memilih Produk?</h2>
             <p class="text-xl mb-8 text-white/90">Tim kami siap membantu Anda menemukan produk yang sesuai dengan kebutuhan bisnis Anda</p>
-            <a href="https://wa.me/<?php echo e(App\Models\Setting::get('whatsapp_number', '6281234567890')); ?>?text=Halo, saya butuh bantuan memilih produk <?php echo e($category->name); ?>" 
+                <a href="https://wa.me/<?php echo e(preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504'))); ?>?text=Halo, saya butuh bantuan memilih produk <?php echo e($category->name); ?>" 
                target="_blank"
                class="inline-flex items-center bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition transform hover:scale-105 shadow-lg">
                 <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">

@@ -36,7 +36,7 @@
                 Siap Suplai Daging ke<br>Seluruh Nusantara
             </h1>
             <p class="text-xl md:text-2xl text-white/90 mb-8">
-                3000+ Mitra Aktif dari hotel, café, restoran, dll.
+                300+ Mitra Aktif dari hotel, café, restoran, dll.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="{{ route('products.index') }}" 
@@ -202,7 +202,7 @@
                     <!-- Image for Halal -->
                     <img src="{{ asset('images/tersertifikasihalal.jpg') }}" 
                          alt="Tersertifikat Halal" 
-                         class="w-full h-full object-cover img-pan transition-opacity duration-500 ease-in-out"
+                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
                          :style="{ opacity: activeTab === 'halal' ? 1 : 0, pointerEvents: activeTab === 'halal' ? 'auto' : 'none' }">
                     
                     <!-- Image for Higienis -->
@@ -301,7 +301,7 @@
 <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Dipercaya 3000+ Mitra Aktif</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Dipercaya 300+ Mitra Aktif</h2>
             <p class="text-xl text-gray-600">Dari skala bisnis kecil hingga besar telah bekerja sama dengan kami secara rutin</p>
         </div>
         
@@ -368,15 +368,15 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
 
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Apa Kata Mereka?</h2>
-            <p class="text-gray-500">Cerita nyata dari para mitra yang telah bersama kami</p>
-        </div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Apa Kata Mereka?</h2>
+                <p class="text-gray-500">Cerita nyata dari mereka yang telah bersama kami</p>
+            </div>
 
         <div class="mb-8">
             <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm text-center">
                 <p class="text-sm text-gray-500 mb-2">Sedikit saran membantu kami melayani lebih baik.</p>
-                <p class="text-gray-500 text-sm">Klik tombol di bawah untuk pergi ke halaman Secreto dan kirim pesan Anda secara langsung kepada kami.</p>
+                <p class="text-gray-500 text-sm">Klik tombol di bawah untuk pergi ke halaman Secreto dan kirim pesan Anda secara anonim kepada kami.</p>
                 <div class="mt-4">
                     <a href="https://secreto.site/ap7308" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold rounded-2xl px-6 py-3 shadow-lg transition">
                         Kirim Pesan ke Secreto
@@ -512,7 +512,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="https://wa.me/{{ App\Models\Setting::get('whatsapp_number') }}?text=Halo! Saya tertarik untuk info pricelist & order retail" 
+                     <a href="https://wa.me/{{ preg_replace('/\\D+/', '', App\Models\Setting::get('whatsapp_number', '+62 852-2546-1504')) }}?text=Halo! Saya tertarik untuk info pricelist & order retail" 
                    target="_blank"
                    class="bg-white/10 hover:bg-white text-white hover:text-gray-800 font-semibold py-5 px-6 rounded-2xl transition-all duration-300 text-center group border border-white/20 hover:border-transparent hover:shadow-xl">
                     <svg class="w-10 h-10 mx-auto mb-3 text-green-400 group-hover:text-green-500 transition" fill="currentColor" viewBox="0 0 24 24">
@@ -587,13 +587,29 @@
 
             <!-- Map -->
             <div class="flex-1 min-h-[260px]">
+                @php
+                    $mapsEmbed = trim((string) App\Models\Setting::get('maps_embed', ''));
+                    $mapsUrl = '';
+
+                    if ($mapsEmbed !== '') {
+                        $decodedEmbed = html_entity_decode($mapsEmbed, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+                        if (preg_match('/src\s*=\s*["\']([^"\']+)["\']/i', $decodedEmbed, $matches)) {
+                            $mapsUrl = $matches[1];
+                        } elseif (preg_match('/https?:\/\/[^\s"\']+/i', $decodedEmbed, $matches)) {
+                            $mapsUrl = $matches[0];
+                        }
+                    }
+                @endphp
+
                 <iframe 
-                    src="https://www.google.com/maps?q=UD.+Daging+makmur+jaya,+Krsak,+Bangsri,+Kabupaten+Jepara,+Jawa+Tengah&output=embed" 
+                    src="{{ $mapsUrl ?: 'https://www.google.com/maps?q=UD.+Daging+makmur+jaya,+Krsak,+Bangsri,+Kabupaten+Jepara,+Jawa+Tengah&output=embed' }}" 
                     width="100%" 
                     height="100%" 
                     style="border:0; display:block;" 
                     allowfullscreen="" 
-                    loading="lazy">
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
 

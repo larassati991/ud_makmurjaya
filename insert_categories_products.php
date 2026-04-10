@@ -23,7 +23,7 @@ $categories = [
     [
         'name' => 'Daging Kambing',
         'slug' => 'daging-kambing',
-        'description' => 'Daging kambing premium dengan potongan sesuai kebutuhan You.',
+        'description' => 'Daging kambing premium dengan potongan sesuai kebutuhan Anda.',
         'order' => 3,
         'is_active' => 1
     ],
